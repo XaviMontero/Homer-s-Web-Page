@@ -1,0 +1,145 @@
+.lesson{
+font-family: Arial, Helvetica, sans-serif;
+border: 5px solid red;
+display: grid;
+grid-template-columns: 140px 1fr;
+grid-template-areas: "thumb title" "description description";
+
+}
+
+.lesson-thum{
+  border: 1px solid black;
+  grid-area: thumb;
+}
+
+.lesson-thum img{
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+
+}
+
+.lesson-title{
+  grid-area: title;
+  border: 1px solid green;
+  margin: 0px;
+}
+
+.lesson-description{
+  grid-area: description;
+
+  border: 1px solid blue;
+  margin: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .lesson {
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:"thumb title" "thumb description";
+  }
+
+}
+
+input[id="lista"]:checked ~ .projects-list{
+  border: 1px solid blue;
+}
+
+input[id="lista"]:checked ~ .projects-list .project{
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 50px 1fr 100px 100px;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 1rem;
+}
+
+
+
+input[id="lista"]:checked ~ .projects-list .project img{
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+input[id="grid"]:checked ~ .projects-list{
+  border: 1px solid blue;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 1rem;
+}
+
+input[id="grid"]:checked ~ .projects-list .project{
+  border: 1px solid forestgreen;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 200px auto auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  overflow: hidden;
+
+
+}
+
+
+input[id="grid"]:checked ~ .projects-list .project img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  grid-area: 1/1 /1/-1;
+}
+
+input[id="grid"]:checked ~ .projects-list .project time:nth-of-type(1){
+
+  grid-column-start: 2;
+}
+
+input[id="grid"]:checked ~ .projects-list .project time:nth-of-type(2){
+  grid-column-start: 2;
+}
+
+
+input[id="grid"]:checked ~ .projects-list .project-name {
+  background-color: orange;
+  grid-row: 2/4;
+}
+
+body{
+  font: 1rem;
+}
+input{
+  display: none;
+}
+label{
+  border: 1px solid red;
+  cursor: pointer;
+  user-select: none;
+  padding: 1rem;
+}
+
+.projects-list {
+  padding: 1rem;
+}
+
+input[id="lista"]:checked ~ .project-action [for="lista"],
+  input[id="grid"]:checked ~ .project-action [for="grid"]{
+  background-color: red;
+  color: wheat;
+}
+
+.project-action{
+  display: flex;
+  justify-content: flex-end;
+}
